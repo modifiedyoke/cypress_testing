@@ -7,3 +7,15 @@ describe('<Quiz />', () => {
     cy.mount(<Quiz />)
   })
 })
+
+describe('Start button', () => {
+  it('should show a Start Quiz button', () => {
+    cy.mount(<Quiz />)
+    cy.get('.btn').should('contain.text', 'Start Quiz')
+  })
+  it('should proceed to a question when clicked', () => {
+    cy.mount(<Quiz />)
+    cy.get('.btn').click()
+    cy.get('h2').should('contain.text', '?')
+  })
+})
